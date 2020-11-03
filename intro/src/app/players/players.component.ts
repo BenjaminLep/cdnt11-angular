@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ConsoleReporter } from 'jasmine';
 import { Player } from '../interfaces';
 
 
@@ -23,11 +22,16 @@ export class PlayersComponent implements OnInit {
     this.players.push(p2);
     this.players.push(p3);
 
-    this.numInjuredPlayers = this.players.filter(p => p.injured).length;
+    this.onChange();
+  
   }
 
-  test() {
-    console.log("Papa a reçu le message");
+    
+  onChange(event?: any) {
+    if (event) console.log(event);
+
+    // Met à jour le nombre de blessés
+    this.numInjuredPlayers = this.players.filter(p => p.injured).length;
   }
 
 }

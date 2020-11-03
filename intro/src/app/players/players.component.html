@@ -4,5 +4,7 @@
 <app-player 
     *ngFor="let player of players" 
     [player]="player"
-    (changeState)="test()"
+    (changeState)="onChange($event)"
     ></app-player>
+
+<app-players-stat [stats]="stats"></app-players-stat>

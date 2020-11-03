@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Player } from '../interfaces';
+import { FruitService } from '../services/fruit.service';
 
 
 @Component({
@@ -10,7 +11,9 @@ import { Player } from '../interfaces';
 export class PlayerComponent implements OnInit {
   @Input() player: Player;
   //@Input() msg: string = "coucou";
-  @Output() changeState = new EventEmitter();
+
+  // on autorise l'émission d'un string ou d'un number
+  @Output() changeState: EventEmitter<string | number> = new EventEmitter();
 
   constructor() { }
 
@@ -18,9 +21,8 @@ export class PlayerComponent implements OnInit {
   }
 
   injure() {
-    console.log(this.player.lastname);
     this.player.injured = !this.player.injured;
-    this.changeState.emit();
+    this.changeState.emit(this.player.lastname);
   }
 
 }
